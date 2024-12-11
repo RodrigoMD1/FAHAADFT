@@ -2,6 +2,16 @@
 
 export const Inicio = () => {
   return (
-    <div>inicio</div>
+    <div>
+
+      <div>
+        inicio
+      </div>
+
+   
+
+    </div>
+
+
   )
 }
