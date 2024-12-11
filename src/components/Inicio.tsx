@@ -2,6 +2,6 @@
 
 export const Inicio = () => {
   return (
-    <div>inicidasdo</div>
+    <div>inicio</div>
   )
 }
