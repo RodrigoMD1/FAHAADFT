@@ -1,5 +1,5 @@
 import './App.css'
-import MisRutas from './Router/MisRutas'
+import {MisRutas} from './Router/MisRutas'
 
 
 function App() {

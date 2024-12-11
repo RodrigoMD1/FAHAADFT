@@ -1,12 +1,12 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import { Header } from '../components/Layout/Header'
 import { Footer } from '../components/Layout/Footer'
 import { Inicio } from '../components/Inicio'
 import { Contacto } from '../components/Contacto'
 
-const MisRutas = () => {
+export const MisRutas = () => {
   return (
-    <>
+    <BrowserRouter>
       {/* Header y navegación */}
       <Header />
 
@@ -28,8 +28,8 @@ const MisRutas = () => {
 
       {/* Footer */}
       <Footer />
-    </>
+    </BrowserRouter>
   )
 }
 
-export default MisRutas
+

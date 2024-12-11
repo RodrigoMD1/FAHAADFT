@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom"
+import { HeroSection } from "./HeroSection"
 
 
 export const Header = () => {
@@ -24,7 +26,7 @@ export const Header = () => {
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-              <li><a>Item 1</a></li>
+              <li><a><NavLink to="/inicio"></NavLink>Inicio</a></li>
               <li>
                 <a>Parent</a>
                 <ul className="p-2">
@@ -39,7 +41,7 @@ export const Header = () => {
         </div>
         <div className="hidden navbar-center lg:flex">
           <ul className="px-1 menu menu-horizontal">
-            <li><a>Item 1</a></li>
+            <li><NavLink to="/inicio">Inicio</NavLink></li>
             <li>
               <details>
                 <summary>Parent</summary>
@@ -49,7 +51,7 @@ export const Header = () => {
                 </ul>
               </details>
             </li>
-            <li><a>Item 3</a></li>
+            <li><NavLink to="/contacto">Contacto</NavLink></li>
           </ul>
         </div>
         <div className="navbar-end">
@@ -58,7 +60,7 @@ export const Header = () => {
       </div>
 
 
-
+      <HeroSection />
 
     </div>
   )

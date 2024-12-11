@@ -2,6 +2,9 @@
 
 export const Contacto = () => {
   return (
-    <div>Contacto</div>
+    <div>
+     <h1></h1>
+      
+    </div>
   )
 }
