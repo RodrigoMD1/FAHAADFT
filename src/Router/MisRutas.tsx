@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { Header } from '../components/Layout/Header'
 import { Footer } from '../components/Layout/Footer'
-import { Inicio } from '../components/inicio'
+import { Inicio } from '../components/Inicio'
 import { Contacto } from '../components/Contacto'
 
 const MisRutas = () => {
