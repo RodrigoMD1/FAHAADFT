@@ -52,7 +52,7 @@ export const Contacto = () => {
 
 
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   
   const onSubmit: SubmitHandler<z.infer<typeof formSchema>> = (data) => {
     console.log(value, setValue)
     console.log(data);
