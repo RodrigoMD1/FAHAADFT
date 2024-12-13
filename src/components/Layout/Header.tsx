@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import { HeroSection } from "./HeroSection"
+
 
 
 export const Header = () => {
@@ -34,7 +34,7 @@ export const Header = () => {
                   <li><a>Submenu 2</a></li>
                 </ul>
               </li>
-              <li><a>Item 3</a></li>
+              <li><NavLink to="/contacto">Contacto</NavLink></li>
             </ul>
           </div>
           <a className="text-xl btn btn-ghost">daisyUI</a>
@@ -55,12 +55,13 @@ export const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
+          <a className="btn">ModoOscuro</a>
           <a className="btn">Button</a>
         </div>
       </div>
 
 
-      <HeroSection />
+     
 
     </div>
   )
