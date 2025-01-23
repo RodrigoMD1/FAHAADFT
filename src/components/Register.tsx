@@ -58,7 +58,7 @@ const SignUpContainer = styled(Stack)(({ theme }) => ({
 }));
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export  function Register(props: { disableCustomTheme?: boolean }) {
+export  function Register() {
   const [emailError, setEmailError] = React.useState(false);
   const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
   const [passwordError, setPasswordError] = React.useState(false);

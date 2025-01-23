@@ -58,17 +58,14 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
 }));
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export  function Login(props: { disableCustomTheme?: boolean }) {
+export  function Login() {
   const [emailError, setEmailError] = React.useState(false);
   const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
   const [passwordError, setPasswordError] = React.useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [open, setOpen] = React.useState(false);
+  //const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
 
   
 
@@ -186,7 +183,7 @@ export  function Login(props: { disableCustomTheme?: boolean }) {
             <Link
               component="button"
               type="button"
-              onClick={handleClickOpen}
+              
               variant="body2"
               sx={{ alignSelf: 'center' }}
             >
