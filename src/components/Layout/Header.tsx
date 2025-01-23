@@ -56,7 +56,10 @@ export const Header = () => {
         </div>
         <div className="navbar-end">
           <a className="btn">ModoOscuro</a>
-          <a className="btn">Button</a>
+          <ul className="px-1 menu menu-horizontal">
+          <li><NavLink to="/login">Login/Register</NavLink></li>
+          </ul>
+         
         </div>
       </div>
 

@@ -1,38 +1,41 @@
+import { useEffect, useState } from 'react';
 import { HeroSection } from "./Layout/HeroSection";
+import axios from 'axios';
 
 
 //importacion de imagenes locales
-import productoImg02 from "../assets/img/prueba01.jpg"
 
-// Simulación de base de datos
-const productos = [
-  {
-    id: 1,
-    nombre: "Producto 1",
-    imagen: productoImg02,
-    descripcion: "Descripción del producto 1.",
-  },
-  {
-    id: 2,
-    nombre: "Producto 2",
-    imagen: productoImg02,
-    descripcion: "Descripción del producto 2.",
-  },
-  {
-    id: 3,
-    nombre: "Producto 3",
-    imagen: productoImg02,
-    descripcion: "Descripción del producto 3.",
-  },
-  {
-    id: 4,
-    nombre: "Producto 4",
-    imagen: productoImg02,
-    descripcion: "Descripción del producto 3.",
-  },
-];
+
+
+
+
+interface Producto{
+  id: number;
+  titulo: string;
+  precio: number;
+  stock: number;
+  talles: string[];
+}
+
 
 export const Inicio = () => {
+
+  const [productos, setProductos] = useState<Producto[]>([]);
+
+  useEffect(() => {
+    // Función para obtener los productos de la API
+    const fetchProductos = async () => {
+      try {
+        const response = await axios.get('https://proyecto-tienda01backend-production.up.railway.app/api/productos');
+        setProductos(response.data);
+      } catch (error) {
+        console.error('Error al obtener los productos:', error);
+      }
+    };
+
+    fetchProductos();
+  }, []);
+
   return (
     <div>
       <HeroSection />
@@ -60,11 +63,12 @@ export const Inicio = () => {
         {productos.map((producto) => (
           <div key={producto.id} className="w-full card glass sm:w-96">
             <figure>
-              <img src={producto.imagen} alt={producto.nombre} />
+              
             </figure>
             <div className="card-body">
-              <h2 className="card-title">{producto.nombre}</h2>
-              <p>{producto.descripcion}</p>
+              <h2 className="card-title">{producto.titulo}</h2>
+              <p>{producto.precio}</p>
+              <p>{producto.stock}</p>
               <div className="justify-end card-actions">
                 <button className="btn btn-primary">Ver más</button>
               </div>
