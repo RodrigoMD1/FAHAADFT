@@ -13,6 +13,10 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+
 
 
 const Card = styled(MuiCard)(({ theme }) => ({
@@ -58,28 +62,15 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
 }));
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export  function Login() {
+export function Login() {
   const [emailError, setEmailError] = React.useState(false);
   const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
   const [passwordError, setPasswordError] = React.useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   //const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
-
-  
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    if (emailError || passwordError) {
-      event.preventDefault();
-      return;
-    }
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
 
   const validateInputs = () => {
     const email = document.getElementById('email') as HTMLInputElement;
@@ -108,13 +99,54 @@ export  function Login() {
     return isValid;
   };
 
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!validateInputs()) {
+      return;
+    }
+
+    const data = new FormData(event.currentTarget);
+    const email = data.get('email');
+    const password = data.get('password');
+
+    try {
+      const response = await axios.post('https://proyecto-tienda01backend-production.up.railway.app/api/auth/login', {
+        email,
+        contraseña: password, // Asegúrate de que el nombre de la propiedad coincida con el backend
+      });
+
+      if (response.status === 201) {
+        const token = response.data.token;
+        localStorage.setItem('token', token);
+        alert('Inicio de sesión exitoso');
+        navigate('/control-panel');
+        // Aquí puedes redirigir al usuario a otra página o guardar el token de autenticación
+      } else {
+        alert('Error en el inicio de sesión');
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        console.error('Error al iniciar sesión:', error.response.data);
+        alert(`Error en el inicio de sesión: ${error.response.data.message}`);
+      } else {
+        console.error('Error al iniciar sesión:', error);
+        alert('Error en el inicio de sesión');
+      }
+    }
+  };
+
+
+
+
   return (
     <>
       <CssBaseline enableColorScheme />
       <SignInContainer direction="column" justifyContent="space-between">
-        
+
         <Card variant="outlined">
-          
+
           <Typography
             component="h1"
             variant="h4"
@@ -171,7 +203,7 @@ export  function Login() {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-           
+
             <Button
               type="submit"
               fullWidth
@@ -180,42 +212,19 @@ export  function Login() {
             >
               Sign in
             </Button>
-            <Link
-              component="button"
-              type="button"
-              
-              variant="body2"
-              sx={{ alignSelf: 'center' }}
-            >
-              Forgot your password?
-            </Link>
+
           </Box>
           <Divider>or</Divider>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <Button
-              fullWidth
-              variant="outlined"
-              onClick={() => alert('Sign in with Google')}
-              
-            >
-              Sign in with Google
-            </Button>
-            <Button
-              fullWidth
-              variant="outlined"
-              onClick={() => alert('Sign in with Facebook')}
-              
-            >
-              Sign in with Facebook
-            </Button>
+
             <Typography sx={{ textAlign: 'center' }}>
-              Don&apos;t have an account?{' '}
+              Already have an account?{' '}
               <Link
                 href="/registro"
                 variant="body2"
                 sx={{ alignSelf: 'center' }}
               >
-                Sign up
+                Registrarse
               </Link>
             </Typography>
           </Box>

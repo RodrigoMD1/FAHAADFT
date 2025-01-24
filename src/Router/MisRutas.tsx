@@ -5,6 +5,7 @@ import { Inicio } from '../components/Inicio'
 import { Contacto } from '../components/Contacto'
 import { Login } from '../components/Login'
 import { Register } from '../components/Register'
+import { ControlPanel } from '../components/ControlPanel'
 
 export const MisRutas = () => {
   return (
@@ -19,6 +20,7 @@ export const MisRutas = () => {
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/login" element={<Login/>} />
         <Route path="/registro" element={<Register/>} />
+        <Route path="/control-panel" element={<ControlPanel/>} />
         <Route
           path="*"
           element={

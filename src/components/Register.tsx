@@ -13,6 +13,8 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
+import axios from 'axios';
+
 
 
 const Card = styled(MuiCard)(({ theme }) => ({
@@ -103,19 +105,44 @@ export  function Register() {
     return isValid;
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    if (nameError || emailError || passwordError) {
-      event.preventDefault();
+
+
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  
+    if (!validateInputs()) {
       return;
     }
+  
     const data = new FormData(event.currentTarget);
-    console.log({
-      name: data.get('name'),
-      lastName: data.get('lastName'),
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const email = data.get('email');
+    const password = data.get('password');
+    const fullName = data.get('name'); // Cambiar 'fullname' a 'name'
+  
+    try {
+      const response = await axios.post('https://proyecto-tienda01backend-production.up.railway.app/api/auth/registro', {
+        email,
+        password,
+        fullName, // Cambiar 'fullname' a 'fullName'
+      });
+  
+      if (response.status === 201) {
+        alert('Registro exitoso');
+      } else {
+        alert('Error en el registro');
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        console.error('Error al registrar:', error.response.data);
+        alert(`Error en el registro: ${error.response.data.message}`);
+      } else {
+        console.error('Error al registrar:', error);
+        alert('Error en el registro');
+      }
+    }
   };
+
 
   return (
     <>
@@ -198,22 +225,7 @@ export  function Register() {
             <Typography sx={{ color: 'text.secondary' }}>or</Typography>
           </Divider>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <Button
-              fullWidth
-              variant="outlined"
-              onClick={() => alert('Sign up with Google')}
-              
-            >
-              Sign up with Google
-            </Button>
-            <Button
-              fullWidth
-              variant="outlined"
-              onClick={() => alert('Sign up with Facebook')}
-              
-            >
-              Sign up with Facebook
-            </Button>
+        
             <Typography sx={{ textAlign: 'center' }}>
               Already have an account?{' '}
               <Link
@@ -221,7 +233,7 @@ export  function Register() {
                 variant="body2"
                 sx={{ alignSelf: 'center' }}
               >
-                Sign in
+                Iniciar Sesion
               </Link>
             </Typography>
           </Box>

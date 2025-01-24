@@ -15,6 +15,7 @@ interface Producto{
   precio: number;
   stock: number;
   talles: string[];
+  imagenes: string[];
 }
 
 
@@ -66,9 +67,10 @@ export const Inicio = () => {
               
             </figure>
             <div className="card-body">
-              <h2 className="card-title">{producto.titulo}</h2>
-              <p>{producto.precio}</p>
-              <p>{producto.stock}</p>
+              <h2 className="card-title"><h1>Nombre: </h1>{producto.titulo}</h2>
+              <p><h1>Precio: </h1>{producto.precio}</p>
+              <p><h1>Stock: </h1>{producto.stock}</p>
+              {producto.imagenes.length > 0 && producto.imagenes.map((imagen, index) => (<img key={index} src={imagen} alt={producto.titulo} className="w-full" />))}
               <div className="justify-end card-actions">
                 <button className="btn btn-primary">Ver más</button>
               </div>
