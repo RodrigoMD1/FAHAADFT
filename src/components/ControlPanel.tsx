@@ -5,6 +5,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 interface Producto {
   id: number;
   titulo: string;
@@ -12,8 +14,8 @@ interface Producto {
   stock: number;
   talles: string[];
   imagen: string;
-}                          
-
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const ControlPanel = () => {
   const [productos, setProductos] = useState<Producto[]>([]);
   const [titulo, setTitulo] = useState('');
@@ -33,6 +35,8 @@ export const ControlPanel = () => {
   const preset_name = "prueba01";
   const cloud_name = "dtjdgkvgq";
 
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
   useEffect(() => {
     checkAdmin();
   }, []);
@@ -41,7 +45,8 @@ export const ControlPanel = () => {
     fetchProductos(page, rowsPerPage);
   }, [page, rowsPerPage]);
 
-  
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
   const checkAdmin = async () => {
     try {
       const token = localStorage.getItem('token'); // Asume que el token se guarda en localStorage
@@ -50,18 +55,18 @@ export const ControlPanel = () => {
         return;
       }
 
-//TODO SEPARAR LA COMPROBACION DE CUANDO INICIA SESION Y APARTE DE CHEQUEAR SI ES ADMIN
+      //TODO SEPARAR LA COMPROBACION DE CUANDO INICIA SESION Y APARTE DE CHEQUEAR SI ES ADMIN
 
       const response = await axios.get('https://proyecto-tienda01backend-production.up.railway.app/api/auth/Panel-Administrador', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log('el usuario es admin',response.data);
+      console.log('el usuario es admin', response.data);
 
 
       if (response.data.user.roles.includes("admin")) {
-        
+
         setIsAdmin(true);
         setIsLoggedIn(true);
         fetchProductos(page, rowsPerPage);
@@ -75,15 +80,7 @@ export const ControlPanel = () => {
     }
   };
 
-
-
-
-
-
-
-
-
-
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   const fetchProductos = async (page: number, rowsPerPage: number) => {
     try {
@@ -100,26 +97,24 @@ export const ControlPanel = () => {
     }
   };
 
-
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
   const handleAddOrUpdateProducto = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const product  = {
+    const product = {
       titulo: titulo,
       precio: Number.parseFloat(precio),
       stock: Number.parseFloat(stock),
       talles: [talles],
       imagenes: [imagen],
-      
-    }
- 
 
+    }
     try {
       const token = localStorage.getItem('token');
       if (editId) {
-        await axios.patch(`https://proyecto-tienda01backend-production.up.railway.app/api/productos/${editId}`, JSON.stringify (product), {
+        await axios.patch(`https://proyecto-tienda01backend-production.up.railway.app/api/productos/${editId}`, JSON.stringify(product), {
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
@@ -127,7 +122,7 @@ export const ControlPanel = () => {
         });
         setEditId(null);
       } else {
-        await axios.post('https://proyecto-tienda01backend-production.up.railway.app/api/productos', JSON.stringify (product), {
+        await axios.post('https://proyecto-tienda01backend-production.up.railway.app/api/productos', JSON.stringify(product), {
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
@@ -145,6 +140,9 @@ export const ControlPanel = () => {
     }
   };
 
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
   const handleEditProducto = (producto: Producto) => {
     setEditId(producto.id);
     setTitulo(producto.titulo);
@@ -153,6 +151,8 @@ export const ControlPanel = () => {
     setTalles(producto.talles.join(', '));
     setImagen(null); // No se puede previsualizar la imagen existente
   };
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   const handleDeleteProducto = async (id: number) => {
     try {
@@ -168,21 +168,14 @@ export const ControlPanel = () => {
     }
   };
 
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/login');
   };
 
-
-
-
-
-
-
-
-
-
-
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -209,37 +202,18 @@ export const ControlPanel = () => {
     }
   };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);
   };
 
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-  
-
-
-
-
 
   if (!isLoggedIn) {
     return (
@@ -259,6 +233,8 @@ export const ControlPanel = () => {
     );
   }
 
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
   if (isLoggedIn && !isAdmin) {
     return (
       <Container>
@@ -273,9 +249,11 @@ export const ControlPanel = () => {
     );
   }
 
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
   return (
-    <Container>
-      <Typography variant="h4" component="h1" gutterBottom>
+    <Container className='p-6 m-8 bg-gray-300'>
+      <Typography variant="h4" component="h1" gutterBottom className='text-black'>
         Panel de Control
       </Typography>
       <Button variant="contained" color="secondary" onClick={handleLogout} sx={{ mb: 2 }}>
@@ -283,12 +261,14 @@ export const ControlPanel = () => {
       </Button>
       <Box component="form" onSubmit={handleAddOrUpdateProducto} sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 4 }}>
         <TextField
+          color="secondary"
           label="Título"
           value={titulo}
           onChange={(e) => setTitulo(e.target.value)}
           required
         />
         <TextField
+          color="secondary"
           label="Precio"
           value={precio}
           onChange={(e) => setPrecio(e.target.value)}
@@ -296,6 +276,7 @@ export const ControlPanel = () => {
           type="number"
         />
         <TextField
+          color="secondary"
           label="Stock"
           value={stock}
           onChange={(e) => setStock(e.target.value)}
@@ -303,6 +284,7 @@ export const ControlPanel = () => {
           type="number"
         />
         <TextField
+          color="secondary"
           label="Talles (separados por comas)"
           value={talles}
           onChange={(e) => setTalles(e.target.value)}
@@ -329,10 +311,10 @@ export const ControlPanel = () => {
         </Button>
       </Box>
       <TableContainer component={Paper}>
-        <Table>
+        <Table >
           <TableHead>
-            <TableRow>
-              <TableCell>Título</TableCell>
+            <TableRow >
+              <TableCell >Título</TableCell>
               <TableCell>Precio</TableCell>
               <TableCell>Stock</TableCell>
               <TableCell>Talles</TableCell>
@@ -363,7 +345,7 @@ export const ControlPanel = () => {
           </TableBody>
         </Table>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPageOptions={[5, 10, 25, 50]}
           component="div"
           count={totalProductos}
           rowsPerPage={rowsPerPage}
@@ -372,7 +354,7 @@ export const ControlPanel = () => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </TableContainer>
-      
+
     </Container>
   );
 };
