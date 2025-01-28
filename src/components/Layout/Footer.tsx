@@ -2,7 +2,7 @@
 
 export const Footer = () => {
   return (
-    <footer className="p-10 rounded footer footer-center bg-base-200 text-base-content">
+    <footer className="p-10 rounded footer footer-center bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px] text-base-content">
       <nav className="grid grid-flow-col gap-4">
         <a className="link link-hover">About us</a>
         <a className="link link-hover">Contact</a>

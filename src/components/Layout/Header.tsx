@@ -8,7 +8,7 @@ export const Header = () => {
   return (
     <div>
 
-      <div className="text-white navbar bg-base-100">
+      <div className="text-white navbar bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px]">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -27,7 +27,7 @@ export const Header = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+              className="z-20 p-2 mt-3 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
               <li><NavLink to="/inicio"></NavLink>Inicio</li>
               <li>
                 <a>Catalogo</a>
@@ -41,15 +41,15 @@ export const Header = () => {
           </div>
           <a className="text-xl btn btn-ghost">Logo</a>
         </div>
-        <div className="hidden navbar-center lg:flex">
+        <div className="z-20 hidden navbar-center lg:flex">
           <ul className="px-1 menu menu-horizontal">
             <li><NavLink to="/inicio">Inicio</NavLink></li>
             <li>
               <details>
                 <summary>Catalogo</summary>
                 <ul className="p-2">
-                  <li><a>Ofertas</a></li>
-                  <li><a>Productos</a></li>
+                <li><NavLink to="/ofertas">Ofertas</NavLink></li>
+                  <li><NavLink to="/productos">Productos</NavLink></li>
                 </ul>
               </details>
             </li>

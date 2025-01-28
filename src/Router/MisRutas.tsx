@@ -6,10 +6,12 @@ import { Contacto } from '../components/Contacto'
 import { Login } from '../components/Login'
 import { Register } from '../components/Register'
 import { ControlPanel } from '../components/ControlPanel'
+import { SubProductos } from '../components/subProductos'
+import { Ofertas } from '../components/Ofertas'
 
 export const MisRutas = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter >
       {/* Header y navegación */}
       <Header />
 
@@ -21,6 +23,8 @@ export const MisRutas = () => {
         <Route path="/login" element={<Login/>} />
         <Route path="/registro" element={<Register/>} />
         <Route path="/control-panel" element={<ControlPanel/>} />
+        <Route path="/productos" element={<SubProductos/>} />
+        <Route path="/ofertas" element={<Ofertas/>} />
         <Route
           path="*"
           element={
