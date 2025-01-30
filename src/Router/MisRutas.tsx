@@ -6,7 +6,7 @@ import { Contacto } from '../components/Contacto'
 import { Login } from '../components/Login'
 import { Register } from '../components/Register'
 import { ControlPanel } from '../components/ControlPanel'
-import { SubProductos } from '../components/subProductos'
+import { SubProductos } from '../components/SubProductos'
 import { Ofertas } from '../components/Ofertas'
 
 export const MisRutas = () => {
