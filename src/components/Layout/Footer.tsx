@@ -2,7 +2,7 @@
 
 export const Footer = () => {
   return (
-    <footer className="p-10 rounded footer footer-center bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px] text-base-content">
+    <footer className="p-10 rounded footer footer-center text-red-600 bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] ">
       <nav className="grid grid-flow-col gap-4">
         <a className="link link-hover">About us</a>
         <a className="link link-hover">Contact</a>
@@ -47,7 +47,7 @@ export const Footer = () => {
         </div>
       </nav>
       <aside>
-        <p>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
+        <p className="text-red-600">Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
       </aside>
     </footer>
   )

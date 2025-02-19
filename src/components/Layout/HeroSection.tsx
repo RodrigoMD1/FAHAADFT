@@ -1,4 +1,4 @@
-import fondo011 from '../../assets/img/city01.jpg';
+import fondo011 from '../../assets/img/fondoIndia02.jpg';
 
 export const HeroSection = () => {
   return (

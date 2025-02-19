@@ -39,34 +39,58 @@ export const Inicio = () => {
   }, []);
 
   return (
-    <div className='text-white bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px]'>
+    <div className='text-black  bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]'>
       <HeroSection />
 
       {/* Sección Sobre Nosotros */}
       <div className="px-6 py-12 m:px-12 lg:px-20 ">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-white sm:text-4xl">
+          <h2 className="text-3xl font-bold text-red-600 sm:text-4xl">
             Sobre Nosotros
           </h2>
-          <p className="mt-4 text-white sm:text-lg">
+          <p className="m-8 mt-4 text-black sm:text-lg">
             Somos una empresa dedicada a ofrecer productos y servicios de alta calidad.
             Nuestro objetivo principal es satisfacer las necesidades de nuestros clientes,
             combinando innovación, pasión y compromiso. Creemos en el poder de la colaboración
             y en construir relaciones duraderas con nuestra comunidad.
           </p>
+
+          <div className="shadow-xl card lg:card-side ">
+            <figure>
+              <img
+                src="https://images.unsplash.com/photo-1519802772250-a52a9af0eacb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGluZGlhfGVufDB8fDB8fHww"
+                alt="Album" />
+            </figure>
+            <figure>
+              <img
+                src="https://images.unsplash.com/photo-1589463349208-95817c91f971?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGluZGlhfGVufDB8fDB8fHww"
+                alt="Album" />
+            </figure>
+            <figure>
+              <img
+                src="https://images.unsplash.com/photo-1519802772250-a52a9af0eacb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGluZGlhfGVufDB8fDB8fHww"
+                alt="Album" />
+            </figure>
+            
+          </div>
+          
         </div>
+
+
+
       </div>
 
 
 
 
+
       {/* Sección de Productos */}
-      <div className="text-3xl divider">Productos</div>
+      <div className="text-3xl text-red-600 divider">Productos</div>
       {/* Contenedor flexible para las tarjetas */}
       <div className="flex flex-wrap justify-center gap-6">
         {/* Render dinámico de tarjetas */}
         {productos.map((producto) => (
-          <div key={producto.id} className="w-full card glass sm:w-96">
+          <div key={producto.id} className="w-full bg-gray-300 card sm:w-96">
             <figure>
               {/* Aquí puedes agregar una imagen principal del producto si lo deseas */}
             </figure>
@@ -127,7 +151,7 @@ export const Inicio = () => {
 
 
 
-      <div className="divider"></div>
+      
 
     </div>
   );
