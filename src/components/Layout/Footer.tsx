@@ -2,15 +2,14 @@
 
 export const Footer = () => {
   return (
-    <footer className="p-10 rounded footer footer-center text-red-600 bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] ">
+    <footer className="p-9 rounded footer footer-center text-red-600 bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] text-xl ">
       <nav className="grid grid-flow-col gap-4">
-        <a className="link link-hover">About us</a>
-        <a className="link link-hover">Contact</a>
-        <a className="link link-hover">Jobs</a>
-        <a className="link link-hover">Press kit</a>
+        <a className="link link-hover">Sobre Nosotros</a>
+        <a className="link link-hover">Contacto</a>
+
       </nav>
       <nav>
-        <div className="grid grid-flow-col gap-4">
+        <div className="grid grid-flow-col gap-4 ">
           <a>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +46,7 @@ export const Footer = () => {
         </div>
       </nav>
       <aside>
-        <p className="text-red-600">Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
+        <p className="text-xl text-red-600">Copyright © {new Date().getFullYear()} - Todos los derechos reservados XXXXXXXX</p>
       </aside>
     </footer>
   )

@@ -5,7 +5,8 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import Swal from 'sweetalert2'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import codigoimg03 from '../assets/img/codigoimg03.jpg'
+import fondoIndia01 from '../assets/img/fondoIndia01.jpg'
+
 
 
 // esta parte valida la informacion que el usuario pone ejemplo verifica que sea string lo que uno escribio
@@ -24,6 +25,8 @@ interface FormValues {
 
 }
 
+
+//? buscar la barra de fondo azul que no lo encuentro por ninguna parte para modificarlo y dejarlo con el fondo blanco
 
 
 
@@ -108,7 +111,7 @@ export const Contacto = () => {
           <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
         </svg>
       ,
-      contact: "Zarate, Buenos Aires, Argentina."
+      contact: "C.A.B.A, Buenos Aires, Argentina."
     },
   ]
 
@@ -120,10 +123,10 @@ export const Contacto = () => {
 
 
 
-      <main className="flex mt-20 overflow-hidden bg-gray-900 ">
+      <main className="flex mt-20 overflow-hidden bg-gray-800 ">
 
         <div className="flex-1 hidden lg:block m-9">
-          <img src={codigoimg03} className="object-cover w-full h-screen" />
+          <img src={fondoIndia01} className="object-cover w-full h-screen" />
         </div>
 
         <div className="flex-1 py-12 lg:flex lg:justify-center lg:h-screen lg:overflow-auto">
@@ -196,7 +199,7 @@ export const Contacto = () => {
                   placeholder='Nombre y apellido '
                   {...register("user_name", { required: true, minLength: 2 })}
 
-                  className="w-full px-3 py-2 mt-2 text-white bg-transparent border rounded-lg shadow-sm focus:border-gray-800"
+                  className="w-full px-3 py-2 mt-2 text-white bg-transparent border rounded-lg shadow-sm focus:border-white"
                 />
 
               </div>
@@ -209,7 +212,7 @@ export const Contacto = () => {
                   type='email'
                   placeholder='Email'
                   {...register("user_email", { required: true, minLength: 2 })}
-                  className="w-full px-3 py-2 mt-2 text-white bg-transparent border rounded-lg shadow-sm focus:border-gray-800"
+                  className="w-full px-3 py-2 mt-2 text-white bg-transparent border rounded-lg shadow-sm focus:border-white"
                 />
 
 
@@ -217,7 +220,7 @@ export const Contacto = () => {
 
 
               <div>
-                <label className="font-medium sm:text-xl">
+                <label className="font-medium sm:text-xl ">
 
                   Mensaje
                 </label>
@@ -225,13 +228,13 @@ export const Contacto = () => {
                 <textarea
                   placeholder='Escribi tus consultas o dudas'
                   {...register("message", { required: true, minLength: 2 })}
-                  className="w-full px-3 py-2 mt-2 bg-transparent border rounded-lg shadow-sm outline-none appearance-none resize-none h-36 focus:border-gray-800" name='message'></textarea>
+                  className="w-full px-3 py-2 mt-2 bg-transparent border rounded-lg shadow-sm outline-none appearance-none resize-none h-36 focus:border-white" name='message'></textarea>
               </div>
 
 
               <button
 
-                className="w-full px-4 py-2 font-medium text-white duration-150 bg-blue-400 rounded-lg sm:text-xl hover:bg-gray-700 active:bg-gray-900"
+                className="w-full px-4 py-2 font-medium text-white duration-150 bg-red-600 rounded-lg sm:text-xl hover:bg-gray-700 active:bg-gray-900"
                 type="submit"
                 value='Send'
               >

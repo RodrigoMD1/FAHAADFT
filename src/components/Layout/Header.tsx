@@ -27,11 +27,11 @@ export const Header = () => {
             </div>
             <ul
               tabIndex={0}
-              className="z-20 p-2 mt-3 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+              className="z-20 p-2 mt-3 text-xl bg-white shadow menu menu-sm dropdown-content rounded-box w-52">
               <li><NavLink to="/inicio"></NavLink>Inicio</li>
               <li>
                 <a>Catalogo</a>
-                <ul className="p-2">
+                <ul className="p-2 ">
                   <li><a>Ofertas</a></li>
                   <li><a>Productos</a></li>
                 </ul>
@@ -42,12 +42,12 @@ export const Header = () => {
           <a className="text-xl btn btn-ghost">Logo</a>
         </div>
         <div className="z-20 hidden navbar-center lg:flex">
-          <ul className="px-1 menu menu-horizontal">
+          <ul className="px-1 text-xl menu menu-horizontal">
             <li><NavLink to="/inicio">Inicio</NavLink></li>
             <li>
               <details>
                 <summary>Catalogo</summary>
-                <ul className="p-2">
+                <ul className="p-2 bg-white ">
                 <li><NavLink to="/ofertas">Ofertas</NavLink></li>
                   <li><NavLink to="/productos">Productos</NavLink></li>
                 </ul>
@@ -56,6 +56,8 @@ export const Header = () => {
             <li><NavLink to="/contacto">Contacto</NavLink></li>
           </ul>
         </div>
+
+        
         <div className='m-5 navbar-end'>
           <label className="swap swap-rotate ">
 

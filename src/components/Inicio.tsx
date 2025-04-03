@@ -48,7 +48,7 @@ export const Inicio = () => {
           <h2 className="text-3xl font-bold text-red-600 sm:text-4xl">
             Sobre Nosotros
           </h2>
-          <p className="m-8 mt-4 text-black sm:text-lg">
+          <p className="m-8 mt-4 text-black sm:text-xl ">
             Somos una empresa dedicada a ofrecer productos y servicios de alta calidad.
             Nuestro objetivo principal es satisfacer las necesidades de nuestros clientes,
             combinando innovación, pasión y compromiso. Creemos en el poder de la colaboración
